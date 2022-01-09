@@ -1,0 +1,23 @@
+<div class="container">
+<h3>{{ formGroup?.get('id')?.value ? 'EDIT' : 'ADD NEW' }}</h3>
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <div class="form-group mb-3">
+      <label for="title">TITLE</label>
+      <input type="text" class="form-control" id="title" formControlName="title" placeholder="Enter title">
+    </div>
+    <div class="form-group mb-3">
+      <label for="description">DESCRIPTION</label>
+      <textarea type="text" class="form-control" id="description" placeholder="Enter description" formControlName="description"></textarea>
+    </div>
+    <div class="form-group mb-3">
+        <label for="type">TYPE</label>
+        <input type="text" class="form-control" id="type" formControlName="type" placeholder="Enter type">
+    </div>
+    <div class="form-group mb-3">
+        <label for="category">CATEGORY</label>
+        <input type="text" class="form-control" id="category" formControlName="category" placeholder="Enter category">
+      </div>
+    <button class="btn btn-primary" type="submit" [disabled]="formGroup.invalid">SUBMIT</button>
+    <a class="btn btn-info" style="margin: 10px;" routerLink="/main/joboffers">GO BACK</a>
+  </form>
+</div>

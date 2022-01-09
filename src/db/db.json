@@ -1,0 +1,68 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "123",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "username": "user",
+      "password": "123",
+      "role": "user"
+    }
+  ],
+  "joboffers": [
+    {
+      "id": 1,
+      "title": "Job offer 1",
+      "description": "Description 1",
+      "usersId": 1,
+      "type": "Remote",
+      "category": "Software engineer"
+    },
+    {
+      "id": 2,
+      "title": "Title 2",
+      "description": "Description 2",
+      "type": "Type2",
+      "category": "category 2",
+      "usersId": 1
+    },
+    {
+      "id": 3,
+      "title": "Title 3",
+      "description": "Description 3",
+      "type": "Type 3",
+      "category": "Category 3",
+      "usersId": 1
+    }
+  ],
+  "userAppliances": [
+    {
+      "id": 1,
+      "userId": 1,
+      "jobofferId": 1,
+      "status": "approved"
+    },
+    {
+      "id": 2,
+      "status": "declined",
+      "userId": 2,
+      "jobofferId": 3
+    }
+  ],
+  "jobOfferUserLikes": [
+    {
+      "id": 1,
+      "userId": 1,
+      "jobofferId": 1
+    },
+    {
+      "userId": 2,
+      "jobofferId": 2,
+      "id": 2
+    }
+  ]
+}

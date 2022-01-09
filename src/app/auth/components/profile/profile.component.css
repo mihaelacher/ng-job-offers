@@ -1,0 +1,12 @@
+.container {
+    max-width: 60%;
+    margin-top: 50px;
+}
+
+label {
+    font-weight: bold;
+}
+
+.btn {
+    margin: 10px;
+}

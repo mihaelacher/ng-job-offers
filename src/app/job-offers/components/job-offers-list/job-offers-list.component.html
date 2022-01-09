@@ -1,0 +1,11 @@
+<div class="container">
+    <h2>JOB OFFERS</h2>
+    <section>
+      <app-job-offers-item *ngFor="let jobOffer of jobOffers" 
+      [jobOffer]="jobOffer"
+      [appliedJobOffersIds]="appliedJobOffersIds"
+      [likedJobOfferIds]="likedJobOfferIds"
+      ></app-job-offers-item>
+    </section>
+  </div>
+  

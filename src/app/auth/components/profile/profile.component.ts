@@ -1,0 +1,72 @@
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ProfileI } from '../../models/profile.model';
+import { User } from '../../models/user.model';
+import { AuthService } from '../../services/auth.service';
+
+@Component({
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.css']
+})
+export class ProfileComponent implements OnInit {
+
+  formGroup: FormGroup;
+
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private authService: AuthService
+  ) {
+    this.formGroup = this.initFormGroup();
+  }
+
+  ngOnInit(): void {
+    let loggedUser = this.authService.getLoggedUserFromLocalStorage();
+    if (loggedUser) {
+      this.authService.getUserByUsername$(loggedUser.username).subscribe({
+        next: (response: User) => {
+          this.formGroup = this.initFormGroup(response.id, response.username, response.password);
+        }
+      });
+    }
+  }
+
+  onSubmit(): void {
+    const body = this.formGroup.value as ProfileI;
+
+    this.authService.putUser$(body).subscribe({
+      next: (user) => {
+        if (user) {
+          this.authService.setLoggedUserInLocalStorage(user);
+
+          this.router.navigate(['/main']);
+        }
+      }
+    });
+  }
+
+  initFormGroup(id?: number, username?: string, password?: string): FormGroup {
+    return this.fb.group({
+      id: id,
+      username: [username, [Validators.required]],
+      password: [password, [Validators.required]]
+    });
+  }
+
+  onDeactivate(): void {
+    let currentUser = this.authService.getLoggedUserFromLocalStorage();
+
+    if (currentUser) {
+      this.authService.deleteUser$(currentUser?.id).subscribe({
+        next: (response) => {
+          if (response) {
+            this.router.navigate(['/main']);
+          } 
+          // else show toastr error message
+        }
+      })
+    }
+  }
+}

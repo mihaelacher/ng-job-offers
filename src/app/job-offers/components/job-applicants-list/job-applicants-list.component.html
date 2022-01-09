@@ -1,0 +1,9 @@
+<div *ngIf="jobApplicants?.length" class="container">
+    <h2>JOB APPLICANTS</h2>
+    <section>
+      <app-job-applicants-item *ngFor="let jobApplicant of jobApplicants" [jobApplicant]="jobApplicant"></app-job-applicants-item>
+    </section>
+  </div>
+
+  <h1 class="text-center text-danger" *ngIf="!jobApplicants?.length">NO APPLICANTS</h1>
+  

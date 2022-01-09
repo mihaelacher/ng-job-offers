@@ -1,0 +1,13 @@
+<div class="container">
+    <h2>MY OFFERS</h2>
+  
+    <a class="btn btn-success" routerLink="/main/joboffers/edit">ADD NEW</a>
+  
+    <section>
+      <app-job-offers-item *ngFor="let jobOffer of jobOffers"
+                     [jobOffer]="jobOffer"
+                     [hasPermissions]="true"
+                     (deleteClicked)="onDelete($event)"></app-job-offers-item>
+    </section>
+  </div>
+  

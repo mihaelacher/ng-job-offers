@@ -1,0 +1,15 @@
+<div class="container">
+      <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+        <div class="form-group mb-3">
+          <label for="title">USERNAME</label>
+          <input type="text" class="form-control" placeholder="Username" id="username" formControlName="username">
+        </div>
+        <div class="form-group mb-3">
+          <label for="description">PASSWORD</label> 
+           <input type="text" class="form-control" placeholder="Password" id="password" formControlName="password">
+      </div>
+        <button class="btn btn-primary" type="submit" [disabled]="formGroup.invalid">SUBMIT</button>
+        <button class="btn btn-danger" type="button" (click)="onDeactivate()">DEACTIVATE</button>
+        <a class="btn btn-info" routerLink="/main/joboffers">GO BACK</a>
+      </form>
+</div>
