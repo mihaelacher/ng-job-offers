@@ -13,13 +13,7 @@ export class ApplicantGuard implements CanActivate {
 
     }
 
-    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-        if (!this.authService.isApplicant$) {
-          this.router.navigate(['/main']);
-    
-          return false;
-        }
-    
-        return true;
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean|Promise<boolean> {
+        return !this.authService.isApplicant$ ? this.router.navigate(['/main']) : true;
       }
 }
