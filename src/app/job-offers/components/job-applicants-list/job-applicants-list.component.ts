@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { of, Subject, switchMap, takeUntil } from 'rxjs';
 import { JobOfferAplianceI } from '../../models/job-appliance.model';
-import { JobOffersService } from '../../services/job-offers.service';
+import { JobApplicantService } from '../../services/job-applicant.service';
 
 @Component({
   selector: 'app-job-applicants-list',
@@ -14,7 +14,7 @@ export class JobApplicantsListComponent implements OnInit, OnDestroy {
   destroy$ = new Subject<boolean>();
 
   constructor(
-    private jobOffersService: JobOffersService,
+    private jobApplicantService: JobApplicantService,
     private route: ActivatedRoute,
   ) {
   }
@@ -25,7 +25,7 @@ export class JobApplicantsListComponent implements OnInit, OnDestroy {
         const id = params['id'];
 
         if (id) {
-          return this.jobOffersService.getJobApplicantsForJobOffer$(id)
+          return this.jobApplicantService.getJobApplicantsForJobOffer$(id)
         }
 
         return of(undefined);
@@ -34,9 +34,10 @@ export class JobApplicantsListComponent implements OnInit, OnDestroy {
     ).subscribe({
       next: (response) => {
         this.jobApplicants = response;
-        console.log(this.jobApplicants);
       }
     });
+
+
   }
 
   ngOnDestroy(): void {

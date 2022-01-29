@@ -4,7 +4,6 @@ import { BehaviorSubject, Observable, of } from "rxjs";
 import { environment } from "src/environments/environment";
 import { Login } from "../models/login.model";
 import { User } from "../models/user.model";
-import { map } from 'rxjs/operators';
 import { ProfileI } from "../models/profile.model";
 
 @Injectable({

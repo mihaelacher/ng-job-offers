@@ -1,5 +1,5 @@
 export interface PostJobOfferUserLikeI {
-    usersId: number,
-    joboffersId: number
+    userId: number,
+    jobofferId: number
   }
   

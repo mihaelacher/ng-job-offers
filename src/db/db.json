@@ -3,12 +3,19 @@
     {
       "id": 1,
       "username": "admin",
+      "email": "admin@admin.com",
       "password": "123",
       "role": "admin"
     },
     {
       "id": 2,
       "username": "user",
+      "password": "123",
+      "role": "user"
+    },
+    {
+      "id": 3,
+      "username": "user2",
       "password": "123",
       "role": "user"
     }
@@ -41,28 +48,62 @@
   ],
   "userAppliances": [
     {
-      "id": 1,
-      "userId": 1,
-      "jobofferId": 1,
-      "status": "approved"
-    },
-    {
-      "id": 2,
-      "status": "declined",
       "userId": 2,
-      "jobofferId": 3
-    }
-  ],
-  "jobOfferUserLikes": [
-    {
-      "id": 1,
-      "userId": 1,
-      "jobofferId": 1
+      "jobofferId": 1,
+      "status": "approved",
+      "id": 1
     },
     {
       "userId": 2,
       "jobofferId": 2,
+      "status": "approved",
       "id": 2
+    },
+    {
+      "userId": 2,
+      "jobofferId": 3,
+      "status": "approved",
+      "id": 3
+    },
+    {
+      "userId": 3,
+      "jobofferId": 1,
+      "status": "new",
+      "id": 4
+    },
+    {
+      "userId": 3,
+      "jobofferId": 2,
+      "status": "declined",
+      "id": 5
+    },
+    {
+      "userId": 3,
+      "jobofferId": 3,
+      "status": "declined",
+      "id": 6
+    }
+  ],
+  "jobOfferUserLikes": [
+    {
+      "userId": 2,
+      "jobofferId": 2,
+      "id": 1
+    },
+    {
+      "userId": 2,
+      "jobofferId": 3,
+      "id": 2
+    },
+    {
+      "userId": 2,
+      "jobofferId": 1,
+      "id": 3
+    },
+    {
+      "userId": 3,
+      "jobofferId": 1,
+      "id": 4
     }
   ]
 }

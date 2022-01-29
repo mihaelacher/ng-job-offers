@@ -1,5 +1,6 @@
 export interface PostUserApplianceI {
-    usersId: number,
-    joboffersId: number
+    userId: number,
+    jobofferId: number,
+    status: string
   }
   

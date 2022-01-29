@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Login } from '../../models/login.model';
@@ -30,7 +30,6 @@ export class LoginComponent {
     this.authService.login$(body).subscribe({
       next: (user) => {
         if (user) {
-          console.log(user);
           this.authService.setLoggedUserInLocalStorage(user);
 
           this.router.navigate(['/main']);

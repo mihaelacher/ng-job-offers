@@ -38,13 +38,14 @@ export class JobOffersItemComponent implements OnInit {
     } 
   }
 
-  onApply(jobofferId: number | undefined, $event: any): void {
+  onApply(jobofferId: number | undefined): void {
     let userAppliance;
 
     if (this.currentUser && jobofferId) {
       userAppliance = {
-        usersId: this.currentUser.id,
-        joboffersId: jobofferId
+        userId: this.currentUser.id,
+        jobofferId: jobofferId,
+        status: 'new'
       }
     }
 
@@ -53,19 +54,20 @@ export class JobOffersItemComponent implements OnInit {
 
       request$.subscribe({
         next: () => {
-          ($event.target as HTMLButtonElement).hidden = true;
+          this.canApply = false;
         }
       });
     }
   }
 
-  onLike(jobofferId: number | undefined, $event: any): void {
+  onLike(jobofferId: number | undefined): void {
+    // on like update likes
     let userLike;
 
     if (this.currentUser && jobofferId) {
       userLike = {
-        usersId: this.currentUser.id,
-        joboffersId: jobofferId
+        userId: this.currentUser.id,
+        jobofferId: jobofferId
       }
     }
 
@@ -74,7 +76,7 @@ export class JobOffersItemComponent implements OnInit {
 
       request$.subscribe({
         next: () => {
-          ($event.target as HTMLButtonElement).hidden = true;
+          this.canLike = false;
         }
       });
     }

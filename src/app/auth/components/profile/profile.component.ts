@@ -27,7 +27,7 @@ export class ProfileComponent implements OnInit {
     if (loggedUser) {
       this.authService.getUserByUsername$(loggedUser.username).subscribe({
         next: (response: User) => {
-          this.formGroup = this.initFormGroup(response.id, response.username, response.password);
+          this.formGroup = this.initFormGroup(response.id, response.username, response.email, response.password);
         }
       });
     }
@@ -47,10 +47,11 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  initFormGroup(id?: number, username?: string, password?: string): FormGroup {
+  initFormGroup(id?: number, username?: string, email?: string, password?: string): FormGroup {
     return this.fb.group({
       id: id,
       username: [username, [Validators.required]],
+      email: [email, [Validators.required]],
       password: [password, [Validators.required]]
     });
   }
@@ -61,6 +62,7 @@ export class ProfileComponent implements OnInit {
     if (currentUser) {
       this.authService.deleteUser$(currentUser?.id).subscribe({
         next: (response) => {
+          this.authService.logout();
           if (response) {
             this.router.navigate(['/main']);
           } 

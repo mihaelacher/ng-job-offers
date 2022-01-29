@@ -43,6 +43,7 @@ export class JobOffersService {
     }
 
     getUserAppliances$(userId: number): Observable<GetUserApplianceI[]> {
+      // TODO find a way to get user likes through userAppliances
       return this.http.get<GetUserApplianceI[]>(`${environment.apiUrl}/userAppliances?userId=${userId}&_expand=joboffer`);
     }
 
@@ -54,15 +55,7 @@ export class JobOffersService {
       return this.http.get<GetJobOfferUserLikeI[]>(`${environment.apiUrl}/jobOfferUserLikes?userId=${userId}&_expand=joboffer`);
     }
 
-    postJobOfferUserLike$(jobofferUserLike: PostJobOfferUserLikeI): Observable<PostUserApplianceI> {
+    postJobOfferUserLike$(jobofferUserLike: PostJobOfferUserLikeI): Observable<PostJobOfferUserLikeI> {
       return this.http.post<PostJobOfferUserLikeI>(`${environment.apiUrl}/jobOfferUserLikes`, jobofferUserLike);
     }
-
-    getJobApplicantsForJobOffer$(jobOfferId: number): Observable<JobOfferAplianceI[]> {
-      return this.http.get<JobOfferAplianceI[]>(`${environment.apiUrl}/userAppliances?jobofferId=${jobOfferId}&_expand=user`);
-  }
-
-  patchJobApplianceStatus$(appliance: ApplianceStatusI): Observable<ApplianceStatusI> {
-      return this.http.patch<ApplianceStatusI>(`${environment.apiUrl}/userAppliances/${appliance.id}`, appliance);
-  }
 }

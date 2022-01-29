@@ -1,11 +1,11 @@
 <div class="container p-3 my-3 bg-dark text-white">
     <h2> {{ jobApplicant?.user?.username }} </h2>
-    <div *ngIf="!isStatusNew">
+    <div [hidden]="isStatusNew">
         <p class="text-success" *ngIf="jobApplicant?.status == 'approved'">USER APPROVED!</p>
         <p class="text-danger" *ngIf="jobApplicant?.status == 'declined'">USER DECLINED!</p>
     </div>
     <div *ngIf="isStatusNew">
-        <button class="btn btn-success" (click)="handleStatusChange('approved')">APPROVE</button>
+        <button *ngIf="!isJobApplicantApproved" class="btn btn-success" (click)="handleStatusChange('approved')">APPROVE</button>
         <button class="btn btn-danger" (click)="handleStatusChange('declined')">DECLINE</button>
     </div>
 </div>

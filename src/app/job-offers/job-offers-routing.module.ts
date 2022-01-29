@@ -1,8 +1,8 @@
 import { NgModule } from "@angular/core";
 import { Route, RouterModule } from "@angular/router";
 import { AclGuard } from "../guards/acl.guard";
-import { JobApplicantsListComponent } from "../job-applicants/components/job-applicants-list/job-applicants-list.component";
 import { MyAppliancesComponent } from "./components/favorites/myappliances.component";
+import { JobApplicantsListComponent } from "./components/job-applicants-list/job-applicants-list.component";
 import { JobOffersFormComponent } from "./components/job-offers-form/job-offers-form.component";
 import { JobOffersListComponent } from "./components/job-offers-list/job-offers-list.component";
 import { JobOffersComponent } from "./components/job-offers/job-offers.component";
