@@ -27,6 +27,14 @@ export class AuthService {
       return this.http.get<User>(`${environment.apiUrl}/users?username=${username}&singular=1`);
     }
 
+    findExistingUserByUsername$(username: string, id?: number): Observable<User[]> {
+      return this.http.get<User[]>(`${environment.apiUrl}/users?username=${username}&id_ne=${id}`);
+    }
+
+    findExistingUserByEmail$(email: string, id?: number): Observable<User[]> {
+      return this.http.get<User[]>(`${environment.apiUrl}/users?email=${email}&id_ne=${id}`);
+    }
+
     putUser$(user: ProfileI): Observable<User> {
       return this.http.put<User>(`${environment.apiUrl}/users/${user.id}`, user);
     }

@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { ProfileI } from '../../models/profile.model';
 import { User } from '../../models/user.model';
 import { AuthService } from '../../services/auth.service';
+import { emailExistsValidator } from '../validators/email.validator';
+import { userExistsValidator } from '../validators/username.validator';
 
 @Component({
   selector: 'app-profile',
@@ -50,8 +52,16 @@ export class ProfileComponent implements OnInit {
   initFormGroup(id?: number, username?: string, email?: string, password?: string): FormGroup {
     return this.fb.group({
       id: id,
-      username: [username, [Validators.required]],
-      email: [email, [Validators.required]],
+      username: [username, {
+        validators: [Validators.required],
+        asyncValidators: [userExistsValidator(this.authService, id)],
+        updateOn: 'blur'
+      }],
+      email: [email, {
+        validators: [Validators.required],
+        asyncValidators: [emailExistsValidator(this.authService, id)],
+        updateOn: 'blur'
+      }],
       password: [password, [Validators.required]]
     });
   }

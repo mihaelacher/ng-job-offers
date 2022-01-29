@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { Route, RouterModule } from "@angular/router";
 import { AclGuard } from "../guards/acl.guard";
+import { ApplicantGuard } from "../guards/applicant.guard";
 import { MyAppliancesComponent } from "./components/favorites/myappliances.component";
 import { JobApplicantsListComponent } from "./components/job-applicants-list/job-applicants-list.component";
 import { JobOffersFormComponent } from "./components/job-offers-form/job-offers-form.component";
@@ -19,7 +20,8 @@ const routes: Route[] = [
         },
         {
           path: 'myappliances',
-          component: MyAppliancesComponent
+          component: MyAppliancesComponent,
+          canActivate: [ApplicantGuard]
         },
         {
           path: 'myjoboffers',

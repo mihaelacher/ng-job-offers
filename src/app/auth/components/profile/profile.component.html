@@ -3,14 +3,38 @@
         <div class="form-group mb-3">
           <label for="title">USERNAME</label>
           <input type="text" class="form-control" placeholder="Username" id="username" formControlName="username">
+
+          <small style="color: red"
+           *ngIf="formGroup.get('username')?.touched && formGroup.get('username')?.hasError('required')">
+            This field is required
+          </small>
+
+          <small style="color: red"
+           *ngIf="formGroup.get('username')?.touched && formGroup.get('username')?.hasError('userExists')">
+            Username not available.
+          </small>
         </div>
         <div class="form-group mb-3">
           <label for="title">EMAIL</label>
           <input type="text" class="form-control" placeholder="Email" id="email" formControlName="email">
+
+          <small style="color: red"
+           *ngIf="formGroup.get('email')?.touched && formGroup.get('email')?.hasError('required')">
+            This field is required
+          </small>
+
+          <small style="color: red"
+           *ngIf="formGroup.get('email')?.touched && formGroup.get('email')?.hasError('emailExists')">
+            Email not available.
+          </small>
       </div>
         <div class="form-group mb-3">
           <label for="description">PASSWORD</label> 
            <input type="text" class="form-control" placeholder="Password" id="password" formControlName="password">
+           <small style="color: red"
+           *ngIf="formGroup.get('password')?.touched && formGroup.get('password')?.hasError('required')">
+            This field is required
+          </small>
       </div>
         <button class="btn btn-primary" type="submit" [disabled]="formGroup.invalid">SUBMIT</button>
         <button class="btn btn-danger" type="button" (click)="onDeactivate()">DEACTIVATE</button>
